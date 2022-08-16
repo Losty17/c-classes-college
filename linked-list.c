@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+enum Options
+{
+    NONE,
+    INSERT,
+    APPEND,
+    REMOVE,
+    POP,
+    QUIT
+};
+
 typedef struct
 {
     int value;
@@ -11,18 +21,27 @@ typedef struct
     int arr_start, arr_end, start, end;
 } List;
 
-int insert(int pos, Node value, List *list)
+int insert(List *list)
 {
+    if (list->arr_end == list->end)
+    {
+        printf("Lista cheia\n");
+        return 0;
+    }
+
+    int pos;
+    printf("Digite a posição: ");
+    scanf("%d", &pos);
+
     if (pos < 0 || pos > list->arr_end)
     {
         printf("Posição inválida\n");
         return 0;
     }
-    else if (list->arr_end == list->end)
-    {
-        printf("Lista cheia\n");
-        return 0;
-    }
+
+    Node value;
+    printf("\nDigite o valor: ");
+    scanf("%d", &value.value);
 
     return 1;
 }
@@ -37,7 +56,7 @@ int append(List *list)
 {
     if (list->end == list->arr_end)
     {
-        printf("Lista cheia\n");
+        printf("\nLista cheia\n\n");
         return 0;
     }
 
@@ -78,7 +97,7 @@ int main()
     printf("Digite o tamanho da lista: ");
     scanf("%d", &size);
 
-    Node array[size];
+    Node array[size - 1];
 
     List list;
     list.array = array;
@@ -86,11 +105,47 @@ int main()
     list.end--;
     list.arr_end = sizeof(array) / sizeof(array[0]);
 
-    for (int i = 0; i < list.arr_end; i++) append(&list);
+    int option = NONE;
+    do {
+        printf("Lista: \n");
+        for (int i = 0; i <= list.end; i++)
+            printf("%d\t", list.array[i].value);
+        printf("\n\n");
 
-    for (int i = 0; i <= list.end; i++)
-        printf("%d\t", list.array[i].value);
-    printf("\n");
+        printf("Digite a opção desejada:\n");
+        printf("1 - Inserir\t");
+        printf("2 - Adicionar ao final\t");
+        printf("3 - Remover\t");
+        printf("4 - Remover último\t");
+        printf("5 - Sair\n\n");
+
+        scanf("%d", &option);
+
+        printf("\n\n");
+
+        switch (option)
+        {
+            case APPEND:
+                append(&list);
+                break;
+
+            case POP:
+                pop(&list);
+                break;
+
+            case INSERT:
+                insert(&list);
+                break;
+            
+            case QUIT:
+                break;
+
+            default:
+                printf("Opção inválida\n\n");
+                break;
+        }
+
+    } while (option != QUIT);
 
     return 1;
 }
