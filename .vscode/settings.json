@@ -31,6 +31,14 @@
   "files.associations": {
     "iostream": "cpp",
     "stdbool.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "print.h": "c",
+    "istream": "c",
+    "ostream": "c",
+    "array": "c",
+    "functional": "c",
+    "tuple": "c",
+    "type_traits": "c",
+    "utility": "c"
   }
 }

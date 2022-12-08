@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/workspaces/c-classes-college/prova_prp/questao2",
-      "program": "/workspaces/c-classes-college/prova_prp/questao2/build/Debug/outDebug",
+      "cwd": "/workspaces/c-classes-college/prova-08-12-22/q2",
+      "program": "/workspaces/c-classes-college/prova-08-12-22/q2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
